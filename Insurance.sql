@@ -36,6 +36,43 @@ CREATE TABLE IF NOT EXISTS PARTICIPATED (
     FOREIGN KEY (reg_num) REFERENCES CAR(reg_num),
     FOREIGN KEY (report_num) REFERENCES ACCIDENT(report_num)
 );
+select accident_date, location from accident ;
+update participated set damage_amount = 25000 where reg_num = 'KA053408' and report_num = 14 ;
+select * from participated ;
+
+insert into accident values ( '16' , '2008-03-08' , 'ashok nagar');
+select *from accident;
+
+select driver_id from participated where damage_amount >=25000 ;
+
+select * from car order by year asc ;
+
+select count(distinct p.report_num)
+from participated p 
+join car c on p.reg_num=c.reg_num
+where c.model = 'Lancer' ;
+
+select count(distinct T1.driver_id)
+from person T1
+join participated T2 on T1.driver_id = T2.driver_id
+join accident T3 on T2.report_num = T3.report_num
+where T3.accident_date between '2008-01-01' and '2008-12-31' ;
+
+select * from participated order by damage_amount desc ;
+
+select avg(damage_amount) from participated ;
+
+select max(damage_amount) from participated ;
+
+
+
+select distinct T1.name 
+from person T1
+join participated T2 on T1.driver_id = T2.driver_id
+where T2.damage_amount > (
+select Avg(damage_amount)
+from participated
+); 
 INSERT INTO PERSON (driver_id, name, address) VALUES
 ('A01', 'Richard', 'Srinivas nagar'),
 ('A02', 'Pradeep', 'Rajaji nagar'),
