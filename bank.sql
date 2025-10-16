@@ -1,12 +1,6 @@
 create database if not exists bank ;
  use bank ;
  
-DROP TABLE IF EXISTS Depositer;
-DROP TABLE IF EXISTS Loan;
-DROP TABLE IF EXISTS BankAccount;
-DROP TABLE IF EXISTS BankCustomer;
-DROP TABLE IF EXISTS Branch;
-
 CREATE TABLE Branch (
     branch_name VARCHAR(50) PRIMARY KEY,
     branch_city VARCHAR(50),
